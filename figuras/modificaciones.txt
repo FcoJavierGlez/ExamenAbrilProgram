@@ -1,0 +1,14 @@
+Modificaciones respecto al examen:
+==================================
+
+JAVA
+====
+-Atributos de clase privados (antes eran friendly).
+-Eliminados los métodos asignaAncho() y asignaAlto(), ahora el acceso a modificar alto y ancho se realiza únicamente mediante setters.
+-El constructor de la clase rectángulo lanza una excepción para ser recogida en su correspondiente Test (antes se recogía en el constructor) quedando libre de bloques try-catch.
+
+
+PYTHON
+======
+-Añadida todas las sobrecargas de operadores para comparar los cuadrados entre sí: igual, mayor que, mayor o igual que, menor que, menor o igual que.
+-Añadido setter en la clase rectángulo (faltaba por añadir).

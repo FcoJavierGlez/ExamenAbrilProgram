@@ -1,0 +1,17 @@
+1. Cambiado el nombre del TestAlmacen (antes Gestisimal.java, ahora TestAlmacen.java)
+
+2. Extraído TestAlmacen.java del paquete donde está ubicado el programa principal (TestAlmacen se ubica ahora en el paquete "test").
+
+3. Añadidas clase Menu.java y Teclado.java (ambos ubicados en el paquete "utiles").
+
+4. Añadida clase IVA (tipo enumerado) en el paquete del programa principal.
+
+5. Eliminada la clase BaseDatos.java (innecesaria al borrar la gestión de la base de datos del repositorio).
+
+6. Añadida clase ArticuloIncorrectoException.java (lanza una excepción cuando se selecciona un artículo que no existe).
+
+7. Dentro de TestAlmacen añadidos los menús: m (menú principal), menuIva (para seleccionar tipo de IVA) y menuMod (para seleccionar la modificación del artículo)
+
+8. Añadida la clase IvaInvalidoException.java (excepción cuando el tipo de IVA elegido no es correcto)
+
+9. Añadida nueva documentación ante los cambios realizados al programa.
