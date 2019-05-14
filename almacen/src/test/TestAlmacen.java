@@ -2,6 +2,7 @@ package test;
 
 import gestisimal.almacen.Almacen;
 import gestisimal.almacen.ArticuloIncorrectoException;
+import gestisimal.almacen.ErrorStockException;
 import gestisimal.almacen.IVA;
 import gestisimal.almacen.IvaInvalidoException;
 import gestisimal.utiles.*;
@@ -131,7 +132,7 @@ public class TestAlmacen {
     codigo = t.leeEntero("\nInserte el código de artículo.");
     try {
       Almacen.baja(codigo);
-    } catch (ArticuloIncorrectoException e) {};
+    } catch (ArticuloIncorrectoException aie) {};
   }
 
   /**
@@ -169,7 +170,7 @@ public class TestAlmacen {
   private static void modificarDescripcion() {
     try {
       Almacen.modificarDescripcion(t.leeEntero("Dime el código del artículo"), t.leeCadena("Introduce la nueva descripción"));
-    } catch (ArticuloIncorrectoException e) {};
+    } catch (ArticuloIncorrectoException aie) {};
   }
   
   
@@ -179,7 +180,7 @@ public class TestAlmacen {
   private static void modificarPrecioCompra() {
     try {
       Almacen.modificarPrecioCompra(t.leeEntero("\nDime el código del artículo"), t.leeDecimal("\nDime el nuevo precio de compra"));
-    } catch (ArticuloIncorrectoException e) {};
+    } catch (ArticuloIncorrectoException aie) {};
   }
   
   
@@ -211,8 +212,10 @@ public class TestAlmacen {
   private static void entradaMercancia() {
     int codigo = t.leeEntero("\nInserte el código del artículo del que ha entrado mercancia");
     try {
-      Almacen.entradaMercancia(codigo);
-    } catch (ArticuloIncorrectoException e) {};
+      Almacen.entradaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han entrado?"));
+    } catch (ArticuloIncorrectoException | ErrorStockException aie) {
+      System.err.println("Artículo incorrecto.");
+    }
   }
 
   /**
@@ -224,10 +227,12 @@ public class TestAlmacen {
   private static void salidaMercancia() {
     int codigo = t.leeEntero("\nInserte el código del artículo del que ha entrado mercancia");
     try {
-      Almacen.salidaMercancia(codigo);
-    } catch (ArticuloIncorrectoException e) {
+      Almacen.salidaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han salido?"));
+    } catch (ArticuloIncorrectoException aie) {
+      System.err.println("Artículo incorrecto.");
+    } catch (ErrorStockException e) {
+      System.err.println("Stock incorrecto. No se puede extraer más artículos de los almacenados.");
     }
-    ;
   }
 
 //  /**

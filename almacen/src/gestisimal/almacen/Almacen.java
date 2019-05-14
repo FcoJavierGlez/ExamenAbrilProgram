@@ -12,6 +12,9 @@ import gestisimal.utiles.*;
 *
 */
 public class Almacen {
+  
+  static Teclado t = new Teclado();
+  
    private static ArrayList<Articulo> almacen = new ArrayList<Articulo>();
    
    
@@ -128,17 +131,11 @@ public class Almacen {
    * 
    * @param codigo Código del articulo
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
+   * @throws ErrorStockException Lanza esta excepción cuando el stock es negativo.
    */
-  public static void entradaMercancia(int codigo) throws ArticuloIncorrectoException{
-    Teclado t = new Teclado();
-    
+  public static void entradaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
     if(getArticulo(codigo) != null) {
-      try {
-        int cantidadArticulos = t.leeEntero("\n¿Cuántos artículos han entrado?");
-        almacen.get(codigo-1).incrementaStock(cantidadArticulos);
-      } catch (ErrorStockException e) {
-        System.out.println(e.getMessage());
-      }
+      almacen.get(codigo-1).incrementaStock(cantidadArticulos);
     } else {
       throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
     }
@@ -150,17 +147,11 @@ public class Almacen {
    * 
    * @param codigo Código del articulo
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
+   * @throws ErrorStockException Lanza esta excepción cuando el stock es negativo.
    */
-  public static void salidaMercancia(int codigo) throws ArticuloIncorrectoException{
-    Teclado t = new Teclado();
-    
+  public static void salidaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
     if(getArticulo(codigo) != null) {
-      try {
-        int cantidadArticulos = t.leeEntero("\n¿Cuántos artículos han entrado?");
-        almacen.get(codigo-1).decrementaStock(cantidadArticulos);
-      } catch (ErrorStockException e) {
-        System.out.println(e.getMessage());
-        }
+      almacen.get(codigo-1).decrementaStock(cantidadArticulos);
       } else {
         throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
       }
