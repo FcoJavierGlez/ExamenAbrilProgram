@@ -69,7 +69,7 @@ public class Almacen {
    */
   public void modificarDescripcion(int codigo, String descripcion) throws ArticuloIncorrectoException {
     if(getArticulo(codigo) != null) {
-      almacen.get(codigo-1).setDescripcion(descripcion);
+      getArticulo(codigo).setDescripcion(descripcion);
     } else {
       throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
     }
@@ -85,7 +85,7 @@ public class Almacen {
    */
   public void modificarPrecioCompra(int codigo, double PrecioCompra) throws ArticuloIncorrectoException {
     if(getArticulo(codigo) != null) {
-      almacen.get(codigo-1).setPrecioCompra(PrecioCompra);
+      getArticulo(codigo).setPrecioCompra(PrecioCompra);
     } else {
       throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
     }
@@ -101,7 +101,7 @@ public class Almacen {
    */
   public void modificarPrecioVenta(int codigo, double PrecioVenta) throws ArticuloIncorrectoException {
     if(getArticulo(codigo) != null) {
-      almacen.get(codigo-1).setPrecioVenta(PrecioVenta);
+      getArticulo(codigo).setPrecioVenta(PrecioVenta);
     } else {
       throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
     }
@@ -119,7 +119,7 @@ public class Almacen {
    */
   public void modificarIva(int codigo, IVA iva) throws ArticuloIncorrectoException, IvaInvalidoException {
     if(getArticulo(codigo) != null) {
-      almacen.get(codigo-1).setTipoDeIva(iva);
+      getArticulo(codigo).setTipoDeIva(iva);
     } else {
       throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
     }
@@ -135,7 +135,7 @@ public class Almacen {
    */
   public void entradaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
     if(getArticulo(codigo) != null) {
-      almacen.get(codigo-1).incrementaStock(cantidadArticulos);
+      getArticulo(codigo).incrementaStock(cantidadArticulos);
     } else {
       throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
     }
@@ -151,7 +151,7 @@ public class Almacen {
    */
   public void salidaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
     if(getArticulo(codigo) != null) {
-      almacen.get(codigo-1).decrementaStock(cantidadArticulos);
+      getArticulo(codigo).decrementaStock(cantidadArticulos);
       } else {
         throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
       }
