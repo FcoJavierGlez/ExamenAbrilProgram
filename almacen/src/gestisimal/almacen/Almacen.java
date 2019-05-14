@@ -15,7 +15,7 @@ public class Almacen {
   
   static Teclado t = new Teclado();
   
-   private static ArrayList<Articulo> almacen = new ArrayList<Articulo>();
+   private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
    
    
   /**
@@ -24,7 +24,7 @@ public class Almacen {
    * @param codigo
    * @return 
    */
-  private static Articulo getArticulo(int codigo) {
+  private Articulo getArticulo(int codigo) {
     for (int i=0; i<almacen.size(); i++) {
       if((almacen.get(i)).getCodigo() == codigo)
         return (almacen.get(i));
@@ -41,7 +41,7 @@ public class Almacen {
    * @return true de que ha insertado correctamente
    * @throws IvaInvalidoException Lanza esta excepción si el artículo recibe un tipo de IVA null
    */
-    public static boolean alta(String Descripcion, double PrecioCompra, double PrecioVenta, IVA iva) throws IvaInvalidoException {
+    public boolean alta(String Descripcion, double PrecioCompra, double PrecioVenta, IVA iva) throws IvaInvalidoException {
       return almacen.add(new Articulo(Descripcion, PrecioCompra, PrecioVenta, iva));      
     }
   
@@ -51,7 +51,7 @@ public class Almacen {
    * @return true si se ha eliminado. false en otro caso
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo seleccionado no existe.
    */
-  public static void baja(int codigo) throws ArticuloIncorrectoException {
+  public void baja(int codigo) throws ArticuloIncorrectoException {
     if (getArticulo(codigo) != null) {
       almacen.remove(getArticulo(codigo));
     } else {
@@ -67,7 +67,7 @@ public class Almacen {
    * @return true si se ha modificado. false en otro caso
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
    */
-  public static void modificarDescripcion(int codigo, String descripcion) throws ArticuloIncorrectoException {
+  public void modificarDescripcion(int codigo, String descripcion) throws ArticuloIncorrectoException {
     if(getArticulo(codigo) != null) {
       almacen.get(codigo-1).setDescripcion(descripcion);
     } else {
@@ -83,7 +83,7 @@ public class Almacen {
    * @return true si se ha modificado. false en otro caso
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
    */
-  public static void modificarPrecioCompra(int codigo, double PrecioCompra) throws ArticuloIncorrectoException {
+  public void modificarPrecioCompra(int codigo, double PrecioCompra) throws ArticuloIncorrectoException {
     if(getArticulo(codigo) != null) {
       almacen.get(codigo-1).setPrecioCompra(PrecioCompra);
     } else {
@@ -99,7 +99,7 @@ public class Almacen {
    * @return true si se ha modificado. false en otro caso
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
    */
-  public static void modificarPrecioVenta(int codigo, double PrecioVenta) throws ArticuloIncorrectoException {
+  public void modificarPrecioVenta(int codigo, double PrecioVenta) throws ArticuloIncorrectoException {
     if(getArticulo(codigo) != null) {
       almacen.get(codigo-1).setPrecioVenta(PrecioVenta);
     } else {
@@ -117,7 +117,7 @@ public class Almacen {
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
    * @throws IvaInvalidoException Lanza esta excepción si el artículo recibe un tipo de IVA null.
    */
-  public static void modificarIva(int codigo, IVA iva) throws ArticuloIncorrectoException, IvaInvalidoException {
+  public void modificarIva(int codigo, IVA iva) throws ArticuloIncorrectoException, IvaInvalidoException {
     if(getArticulo(codigo) != null) {
       almacen.get(codigo-1).setTipoDeIva(iva);
     } else {
@@ -133,7 +133,7 @@ public class Almacen {
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
    * @throws ErrorStockException Lanza esta excepción cuando el stock es negativo.
    */
-  public static void entradaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
+  public void entradaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
     if(getArticulo(codigo) != null) {
       almacen.get(codigo-1).incrementaStock(cantidadArticulos);
     } else {
@@ -149,7 +149,7 @@ public class Almacen {
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo no existe.
    * @throws ErrorStockException Lanza esta excepción cuando el stock es negativo.
    */
-  public static void salidaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
+  public void salidaMercancia(int codigo, int cantidadArticulos) throws ArticuloIncorrectoException, ErrorStockException {
     if(getArticulo(codigo) != null) {
       almacen.get(codigo-1).decrementaStock(cantidadArticulos);
       } else {
@@ -163,7 +163,7 @@ public class Almacen {
    * 
    * @return 
    */
-  public static StringBuilder mostrarLista() {
+  public StringBuilder mostrarLista() {
     StringBuilder cadena = new StringBuilder();
     for (int i=0; i<almacen.size(); i++) {
       cadena.append("\n\nArtículo nº (" + (almacen.get(i)).getCodigo() + "): \n" + (almacen.get(i)).toString());

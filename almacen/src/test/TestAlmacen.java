@@ -35,16 +35,17 @@ public class TestAlmacen {
   static Menu menuIva = new Menu("Tipo de IVA", new String[] { "General", "Reducido", "Super reducido" });
   static Menu menuMod = new Menu("Modificar", new String[] { "Descripción", "Precio de compra", "Precio de venta", "Tipo de IVA" });
   
+  //Almacén:
+  private static Almacen almacen = new Almacen();
+  
   //Teclado:
   static Teclado t = new Teclado();
   
   public static void main(String[] args) {
-    // Inicio de programa:
     while (true) {
       switch (m.interactua()) {
       case 1:
-        System.out.println(Almacen.mostrarLista()); // Imprimimos la lista
-        //esperaSegundos(1); //Esperamos 1 segundo antes de volver a mostrar el menú
+        System.out.println(almacen.mostrarLista()); //Imprimimos la lista
         break;
       case 2:
         altaArticulo();
@@ -69,8 +70,7 @@ public class TestAlmacen {
 
   }
 
-  // ##################################### MÉTODOS
-  // #####################################\\
+  // MÉTODOS \\
 
   /**
    * Imprime el menú con los tipos de IVA que puede tener un artículo
@@ -106,7 +106,7 @@ public class TestAlmacen {
    */
   private static void altaArticulo() {    
     try {
-      Almacen.alta(t.leeCadena("\nAsigna la descripción del artículo."), 
+      almacen.alta(t.leeCadena("\nAsigna la descripción del artículo."), 
           t.leeDecimal("\nAsigna el precio de compra del artículo."),
           t.leeDecimal("\nAsigna el precio de venta del artículo."),
           menuIva());
@@ -131,7 +131,7 @@ public class TestAlmacen {
 
     codigo = t.leeEntero("\nInserte el código de artículo.");
     try {
-      Almacen.baja(codigo);
+      almacen.baja(codigo);
     } catch (ArticuloIncorrectoException aie) {};
   }
 
@@ -169,7 +169,7 @@ public class TestAlmacen {
    */
   private static void modificarDescripcion() {
     try {
-      Almacen.modificarDescripcion(t.leeEntero("Dime el código del artículo"), t.leeCadena("Introduce la nueva descripción"));
+      almacen.modificarDescripcion(t.leeEntero("Dime el código del artículo"), t.leeCadena("Introduce la nueva descripción"));
     } catch (ArticuloIncorrectoException aie) {};
   }
   
@@ -179,7 +179,7 @@ public class TestAlmacen {
    */
   private static void modificarPrecioCompra() {
     try {
-      Almacen.modificarPrecioCompra(t.leeEntero("\nDime el código del artículo"), t.leeDecimal("\nDime el nuevo precio de compra"));
+      almacen.modificarPrecioCompra(t.leeEntero("\nDime el código del artículo"), t.leeDecimal("\nDime el nuevo precio de compra"));
     } catch (ArticuloIncorrectoException aie) {};
   }
   
@@ -189,7 +189,7 @@ public class TestAlmacen {
    */
   private static void modificarPrecioVenta() {
     try {
-      Almacen.modificarPrecioVenta(t.leeEntero("\nDime el código del artículo"), t.leeDecimal("\nDime el nuevo precio de venta"));
+      almacen.modificarPrecioVenta(t.leeEntero("\nDime el código del artículo"), t.leeDecimal("\nDime el nuevo precio de venta"));
     } catch (ArticuloIncorrectoException e) {};
   }
   
@@ -199,7 +199,7 @@ public class TestAlmacen {
    */
   private static void modificarIva() {
     try {
-      Almacen.modificarIva(t.leeEntero("\nDime el código del artículo"), menuIva());
+      almacen.modificarIva(t.leeEntero("\nDime el código del artículo"), menuIva());
     } catch (ArticuloIncorrectoException | IvaInvalidoException e) {};
   }
   
@@ -212,7 +212,7 @@ public class TestAlmacen {
   private static void entradaMercancia() {
     int codigo = t.leeEntero("\nInserte el código del artículo del que ha entrado mercancia");
     try {
-      Almacen.entradaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han entrado?"));
+      almacen.entradaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han entrado?"));
     } catch (ArticuloIncorrectoException | ErrorStockException aie) {
       System.err.println("Artículo incorrecto.");
     }
@@ -227,7 +227,7 @@ public class TestAlmacen {
   private static void salidaMercancia() {
     int codigo = t.leeEntero("\nInserte el código del artículo del que ha entrado mercancia");
     try {
-      Almacen.salidaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han salido?"));
+      almacen.salidaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han salido?"));
     } catch (ArticuloIncorrectoException aie) {
       System.err.println("Artículo incorrecto.");
     } catch (ErrorStockException e) {
