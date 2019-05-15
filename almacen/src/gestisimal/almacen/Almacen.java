@@ -51,9 +51,9 @@ public class Almacen {
    * @return true si se ha eliminado. false en otro caso
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo seleccionado no existe.
    */
-  public void baja(int codigo) throws ArticuloIncorrectoException {
+  public boolean baja(int codigo) throws ArticuloIncorrectoException {
     if (getArticulo(codigo) != null) {
-      almacen.remove(getArticulo(codigo));
+      return almacen.remove(getArticulo(codigo));
     } else {
       throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
     }    
