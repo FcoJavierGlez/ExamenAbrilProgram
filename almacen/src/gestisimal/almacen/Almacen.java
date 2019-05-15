@@ -52,11 +52,7 @@ public class Almacen {
    * @throws ArticuloIncorrectoException Lanza esta excepción si el artículo seleccionado no existe.
    */
   public boolean baja(int codigo) throws ArticuloIncorrectoException {
-    if (getArticulo(codigo) != null) {
-      return almacen.remove(getArticulo(codigo));
-    } else {
-      throw new ArticuloIncorrectoException("\nEl artículo seleccionado no existe");
-    }    
+    return almacen.remove(getArticulo(codigo)); 
   }
    
   /**
