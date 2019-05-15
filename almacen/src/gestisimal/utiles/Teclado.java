@@ -29,10 +29,8 @@ public class Teclado {
    * @return Cadena de caracteres (String).
    */
   public String leeCadena(String mensaje) {
-    String cadena = "";
-    System.out.println(mensaje);    
-    cadena = s.nextLine();
-    return cadena;
+    System.out.println(mensaje);
+    return leeCadena();
   }
   
   /**
@@ -41,14 +39,12 @@ public class Teclado {
    * @return Caracter (char).
    */
   public char leeCaracter() {
-    char caracter;   
     try {
-      caracter = leeCadena().charAt(0);
+      return leeCadena().charAt(0);
     } catch (Exception e) {
       System.err.println("Caracter incorrecto.");
-      caracter = 0;
+      return 0;
     }
-    return caracter;
   }
   
   /**
@@ -56,15 +52,13 @@ public class Teclado {
    * 
    * @return Caracter (char).
    */
-  public char leeCaracter(String mensaje) {
-    char caracter;   
+  public char leeCaracter(String mensaje) { 
     try {
-      caracter = leeCadena(mensaje).charAt(0);
+      return leeCadena(mensaje).charAt(0);
     } catch (Exception e) {
       System.err.println("Caracter incorrecto.");
-      caracter = 0;
+      return 0;
     }
-    return caracter;
   }
   
   /**
@@ -73,13 +67,12 @@ public class Teclado {
    * @return Número entero (int).
    */
   public int leeEntero() {
-    int numero = 0;
     try {
-      numero = Integer.parseInt(leeCadena());
+      return Integer.parseInt(leeCadena());
     } catch (Exception e) {
       System.err.println("No ha insertado un número entero. Por defecto valdrá 0.");
+      return 0;
     }    
-    return numero;
   }
   
   /**
@@ -88,13 +81,12 @@ public class Teclado {
    * @return Número entero (int).
    */
   public int leeEntero(String mensaje) {
-    int numero = 0;
     try {
-      numero = Integer.parseInt(leeCadena(mensaje));
+      return Integer.parseInt(leeCadena(mensaje));
     } catch (Exception e) {
       System.err.println("No ha insertado un número entero. Por defecto valdrá 0.");
-    } 
-    return numero;
+      return 0;
+    }
   }
   
   /**
@@ -103,13 +95,12 @@ public class Teclado {
    * @return Número decimal (double).
    */
   public double leeDecimal() {
-    double numero = 0;
     try {
-      numero = Double.parseDouble(leeCadena());
+      return Double.parseDouble(leeCadena());
     } catch (Exception e) {
       System.err.println("No ha insertado un número decimal. Por defecto valdrá 0.");
-    }    
-    return numero;
+      return 0;
+    }
   }
   
   /**
@@ -118,13 +109,12 @@ public class Teclado {
    * @return Número decimal (double).
    */
   public double leeDecimal(String mensaje) {
-    double numero = 0;
     try {
-      numero = Double.parseDouble(leeCadena(mensaje));
+      return Double.parseDouble(leeCadena(mensaje));
     } catch (Exception e) {
       System.err.println("No ha insertado un número decimal. Por defecto valdrá 0.");
-    } 
-    return numero;
+      return 0;
+    }
   }  
   
 }
