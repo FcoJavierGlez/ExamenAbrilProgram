@@ -103,8 +103,7 @@ public class Articulo {
    * @param numeroCodigo  Código (int) de artículo.
    */
   private void setCodigo() {
-    codigo = numArticulo;
-    numArticulo++;
+    codigo = numArticulo++;
   }
   
   
