@@ -10,14 +10,7 @@ import java.util.Scanner;
  */
 public class Teclado {
   
-  Scanner s = new Scanner(System.in);
-  
-  /**
-   * Constructor Clase Teclado.
-   */
-  public Teclado() {
-    
-  }
+  static Scanner s = new Scanner(System.in);
   
   /**
    * Lee y devuelve una cadena.
