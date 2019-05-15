@@ -35,14 +35,14 @@ public class Almacen {
   /**
    * Añade el artículo al almacén siempre y cuando no exista.
    * 
-   * @param Descripcion
-   * @param PrecioCompra
-   * @param PrecioVenta
+   * @param descripcion
+   * @param precioCompra
+   * @param precioVenta
    * @return true de que ha insertado correctamente
    * @throws IvaInvalidoException Lanza esta excepción si el artículo recibe un tipo de IVA null
    */
-    public boolean alta(String Descripcion, double PrecioCompra, double PrecioVenta, IVA iva) throws IvaInvalidoException {
-      return almacen.add(new Articulo(Descripcion, PrecioCompra, PrecioVenta, iva));      
+    public boolean alta(String descripcion, double precioCompra, double precioVenta, IVA iva) throws IvaInvalidoException {
+      return almacen.add(new Articulo(descripcion, precioCompra, precioVenta, iva));      
     }
   
   /**
