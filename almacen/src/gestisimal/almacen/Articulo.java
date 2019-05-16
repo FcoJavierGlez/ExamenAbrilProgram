@@ -110,10 +110,10 @@ public class Articulo {
   /**
    * Inserta la descripción del artículo.
    * 
-   * @param desc  Descripción (String) del artículo.
+   * @param descripcion  Descripción (String) del artículo.
    */
-  void setDescripcion(String desc) {
-    descripcion = desc;
+  void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
   }
   
   
@@ -122,18 +122,18 @@ public class Articulo {
    * 
    * @param precioCompra  Precio (double) con el que fue comprado el artículo.
    */
-  void setPrecioCompra(double precioComp) {
-    precioCompra = precioComp;
+  void setPrecioCompra(double precioCompra) {
+    this.precioCompra = precioCompra;
   }
   
   
   /**
    * Inserta el precio de venta del artículo.
    * 
-   * @param precioVen  Precio (double) de venta del artículo.
+   * @param precioVenta  Precio (double) de venta del artículo.
    */
-  void setPrecioVenta(double precioVen) {
-    precioVenta = precioVen;
+  void setPrecioVenta(double precioVenta) {
+    this.precioVenta = precioVenta;
   }
   
   
