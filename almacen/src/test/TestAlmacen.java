@@ -38,14 +38,11 @@ public class TestAlmacen {
   //Almacén:
   private static Almacen almacen = new Almacen();
   
-  //Teclado:
-  static Teclado t = new Teclado();
-  
   public static void main(String[] args) {
     while (true) {
       switch (m.interactua()) {
       case 1:
-        System.out.println(almacen.mostrarLista()); //Imprimimos la lista
+        System.out.println(almacen.mostrarLista());
         break;
       case 2:
         altaArticulo();
@@ -79,9 +76,7 @@ public class TestAlmacen {
    * @return Tipo de IVA (Enumerado)
    */
   private static IVA menuIva() {
-    int opcion = menuIva.interactua();
-    
-    switch (opcion) {
+    switch (menuIva.interactua()) {
       case 1:
         return IVA.GENERAL;
       case 2:
@@ -106,9 +101,9 @@ public class TestAlmacen {
    */
   private static void altaArticulo() {    
     try {
-      almacen.alta(t.leeCadena("\nAsigna la descripción del artículo."), 
-          t.leeDecimal("\nAsigna el precio de compra del artículo."),
-          t.leeDecimal("\nAsigna el precio de venta del artículo."),
+      almacen.alta(Teclado.leeCadena("\nAsigna la descripción del artículo."), 
+          Teclado.leeDecimal("\nAsigna el precio de compra del artículo."),
+          Teclado.leeDecimal("\nAsigna el precio de venta del artículo."),
           menuIva());
     } catch (IvaInvalidoException e) {
       System.err.println("El artículo no pudo ser creado.");
@@ -127,11 +122,8 @@ public class TestAlmacen {
    * @param s   Scanner
    */
   private static void bajaArticulo() {
-    int codigo;
-
-    codigo = t.leeEntero("\nInserte el código de artículo.");
     try {
-      almacen.baja(codigo);
+      almacen.baja(Teclado.leeEntero("\nInserte el código de artículo."));
     } catch (ArticuloIncorrectoException aie) {};
   }
 
@@ -169,7 +161,7 @@ public class TestAlmacen {
    */
   private static void modificarDescripcion() {
     try {
-      almacen.modificarDescripcion(t.leeEntero("Dime el código del artículo"), t.leeCadena("Introduce la nueva descripción"));
+      almacen.modificarDescripcion(Teclado.leeEntero("Dime el código del artículo"), Teclado.leeCadena("Introduce la nueva descripción"));
     } catch (ArticuloIncorrectoException aie) {};
   }
   
@@ -179,7 +171,7 @@ public class TestAlmacen {
    */
   private static void modificarPrecioCompra() {
     try {
-      almacen.modificarPrecioCompra(t.leeEntero("\nDime el código del artículo"), t.leeDecimal("\nDime el nuevo precio de compra"));
+      almacen.modificarPrecioCompra(Teclado.leeEntero("\nDime el código del artículo"), Teclado.leeDecimal("\nDime el nuevo precio de compra"));
     } catch (ArticuloIncorrectoException aie) {};
   }
   
@@ -189,7 +181,7 @@ public class TestAlmacen {
    */
   private static void modificarPrecioVenta() {
     try {
-      almacen.modificarPrecioVenta(t.leeEntero("\nDime el código del artículo"), t.leeDecimal("\nDime el nuevo precio de venta"));
+      almacen.modificarPrecioVenta(Teclado.leeEntero("\nDime el código del artículo"), Teclado.leeDecimal("\nDime el nuevo precio de venta"));
     } catch (ArticuloIncorrectoException e) {};
   }
   
@@ -199,7 +191,7 @@ public class TestAlmacen {
    */
   private static void modificarIva() {
     try {
-      almacen.modificarIva(t.leeEntero("\nDime el código del artículo"), menuIva());
+      almacen.modificarIva(Teclado.leeEntero("\nDime el código del artículo"), menuIva());
     } catch (ArticuloIncorrectoException | IvaInvalidoException e) {};
   }
   
@@ -210,9 +202,9 @@ public class TestAlmacen {
    * 
    */
   private static void entradaMercancia() {
-    int codigo = t.leeEntero("\nInserte el código del artículo del que ha entrado mercancia");
     try {
-      almacen.entradaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han entrado?"));
+      almacen.entradaMercancia(Teclado.leeEntero("\nInserte el código del artículo del que ha entrado mercancia"),
+          Teclado.leeEntero("\n¿Cuántos artículos han entrado?"));
     } catch (ArticuloIncorrectoException | ErrorStockException aie) {
       System.err.println("Artículo incorrecto.");
     }
@@ -222,12 +214,12 @@ public class TestAlmacen {
    * Método que se encarga de gestionar la entrada de artículos del almacén,
    * certifando que no puedan ingresar un número negativo de artículos.
    * 
-   * @param t Teclado
+   * @param Teclado Teclado
    */
   private static void salidaMercancia() {
-    int codigo = t.leeEntero("\nInserte el código del artículo del que ha entrado mercancia");
     try {
-      almacen.salidaMercancia(codigo, t.leeEntero("\n¿Cuántos artículos han salido?"));
+      almacen.salidaMercancia(Teclado.leeEntero("\nInserte el código del artículo del que ha entrado mercancia"),
+          Teclado.leeEntero("\n¿Cuántos artículos han salido?"));
     } catch (ArticuloIncorrectoException aie) {
       System.err.println("Artículo incorrecto.");
     } catch (ErrorStockException e) {

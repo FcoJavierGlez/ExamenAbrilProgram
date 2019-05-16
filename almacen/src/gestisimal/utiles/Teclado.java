@@ -17,7 +17,7 @@ public class Teclado {
    * 
    * @return Cadena de caracteres (String).
    */
-  public String leeCadena() {
+  public static String leeCadena() {
     String cadena = "";
     cadena = s.nextLine();
     return cadena;
@@ -28,7 +28,7 @@ public class Teclado {
    * 
    * @return Cadena de caracteres (String).
    */
-  public String leeCadena(String mensaje) {
+  public static String leeCadena(String mensaje) {
     System.out.println(mensaje);
     return leeCadena();
   }
@@ -38,7 +38,7 @@ public class Teclado {
    * 
    * @return Caracter (char).
    */
-  public char leeCaracter() {
+  public static char leeCaracter() {
     try {
       return leeCadena().charAt(0);
     } catch (Exception e) {
@@ -52,7 +52,7 @@ public class Teclado {
    * 
    * @return Caracter (char).
    */
-  public char leeCaracter(String mensaje) { 
+  public static char leeCaracter(String mensaje) { 
     try {
       return leeCadena(mensaje).charAt(0);
     } catch (Exception e) {
@@ -66,7 +66,7 @@ public class Teclado {
    * 
    * @return Número entero (int).
    */
-  public int leeEntero() {
+  public static int leeEntero() {
     try {
       return Integer.parseInt(leeCadena());
     } catch (Exception e) {
@@ -80,7 +80,7 @@ public class Teclado {
    * 
    * @return Número entero (int).
    */
-  public int leeEntero(String mensaje) {
+  public static int leeEntero(String mensaje) {
     try {
       return Integer.parseInt(leeCadena(mensaje));
     } catch (Exception e) {
@@ -94,7 +94,7 @@ public class Teclado {
    * 
    * @return Número decimal (double).
    */
-  public double leeDecimal() {
+  public static double leeDecimal() {
     try {
       return Double.parseDouble(leeCadena());
     } catch (Exception e) {
@@ -108,7 +108,7 @@ public class Teclado {
    * 
    * @return Número decimal (double).
    */
-  public double leeDecimal(String mensaje) {
+  public static double leeDecimal(String mensaje) {
     try {
       return Double.parseDouble(leeCadena(mensaje));
     } catch (Exception e) {

@@ -41,10 +41,7 @@ public class Menu {
    * @return Número (int) de la opción elegida.
    */
   private int opcionElegida() {
-    int opcion = 0;
-    Teclado t = new Teclado();
-    opcion = t.leeEntero("\nElige una opción");
-    return opcion;
+    return Teclado.leeEntero("\nElige una opción");
   }
   
   /**

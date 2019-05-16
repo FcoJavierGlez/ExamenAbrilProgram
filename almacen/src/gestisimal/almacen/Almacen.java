@@ -13,9 +13,7 @@ import gestisimal.utiles.*;
 */
 public class Almacen {
   
-  static Teclado t = new Teclado();
-  
-   private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
+  private ArrayList<Articulo> almacen = new ArrayList<Articulo>();
    
    
   /**
@@ -25,6 +23,7 @@ public class Almacen {
    * @return 
    */
   private Articulo getArticulo(int codigo) {
+    //return almacen.indexOf();
     for (int i=0; i<almacen.size(); i++) {
       if((almacen.get(i)).getCodigo() == codigo)
         return (almacen.get(i));
