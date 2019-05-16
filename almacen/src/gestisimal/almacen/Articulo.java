@@ -40,6 +40,10 @@ public class Articulo {
     setCodigo();
   }
 
+  Articulo(int codigo) {
+    this.codigo=codigo;
+  }
+
   /**
    * Asigna el tipo de IVA al artículo
    * 
@@ -47,11 +51,9 @@ public class Articulo {
    * @throws IvaInvalidoException Lanza esta excepción si el artículo recibe un tipo de IVA null.
    */
   void setTipoDeIva(IVA iva) throws IvaInvalidoException {
-    if (iva != null) {
-      this.tipoDeIva = iva;
-    } else {
+    if (iva== null) 
       throw new IvaInvalidoException("\nTipo de IVA inválido.");
-    }
+    this.tipoDeIva = iva;
   }
   
   //#################     STOCK     #################\\
@@ -62,9 +64,9 @@ public class Articulo {
    * @throws ErrorStockException Cuando la cantidad es negativa 
    */
   void incrementaStock(int cantidad) throws ErrorStockException{
-      if(cantidad<0)
-        throw new ErrorStockException("Incrementa stock: La cantidad no puede ser negativa.");
-      setStock(getStock()+cantidad);
+    if(cantidad<0)
+      throw new ErrorStockException("Incrementa stock: La cantidad no puede ser negativa.");
+    setStock(getStock()+cantidad);
   }
   
   

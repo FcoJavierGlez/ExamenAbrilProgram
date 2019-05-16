@@ -61,7 +61,7 @@ public class TestAlmacen {
         break;
       case 7:
         System.out.print("Gracias por usar Gestisimal.");
-        System.exit(0);
+        return;//System.exit(0);
       }
     }
 
@@ -81,10 +81,10 @@ public class TestAlmacen {
         return IVA.GENERAL;
       case 2:
         return IVA.REDUCIDO;
-      case 3:
-        return IVA.SUPER_REDUCIDO;
       default:
-        return null;
+        return IVA.SUPER_REDUCIDO;
+//      default:
+//        return null;
     }
   }
   
@@ -106,8 +106,8 @@ public class TestAlmacen {
           Teclado.leeDecimal("\nAsigna el precio de venta del artículo."),
           menuIva());
     } catch (IvaInvalidoException e) {
-      System.err.println("El artículo no pudo ser creado.");
-    };
+      System.err.println("El artículo no pudo ser creado."+e.getMessage());
+    }
 
   }
   
@@ -124,7 +124,7 @@ public class TestAlmacen {
   private static void bajaArticulo() {
     try {
       almacen.baja(Teclado.leeEntero("\nInserte el código de artículo."));
-    } catch (ArticuloIncorrectoException aie) {};
+    } catch (ArticuloIncorrectoException aie) {}
   }
 
   /**
@@ -162,7 +162,7 @@ public class TestAlmacen {
   private static void modificarDescripcion() {
     try {
       almacen.modificarDescripcion(Teclado.leeEntero("Dime el código del artículo"), Teclado.leeCadena("Introduce la nueva descripción"));
-    } catch (ArticuloIncorrectoException aie) {};
+    } catch (ArticuloIncorrectoException aie) {}
   }
   
   
@@ -172,7 +172,7 @@ public class TestAlmacen {
   private static void modificarPrecioCompra() {
     try {
       almacen.modificarPrecioCompra(Teclado.leeEntero("\nDime el código del artículo"), Teclado.leeDecimal("\nDime el nuevo precio de compra"));
-    } catch (ArticuloIncorrectoException aie) {};
+    } catch (ArticuloIncorrectoException aie) {}
   }
   
   
@@ -182,7 +182,7 @@ public class TestAlmacen {
   private static void modificarPrecioVenta() {
     try {
       almacen.modificarPrecioVenta(Teclado.leeEntero("\nDime el código del artículo"), Teclado.leeDecimal("\nDime el nuevo precio de venta"));
-    } catch (ArticuloIncorrectoException e) {};
+    } catch (ArticuloIncorrectoException e) {}
   }
   
   
@@ -192,7 +192,7 @@ public class TestAlmacen {
   private static void modificarIva() {
     try {
       almacen.modificarIva(Teclado.leeEntero("\nDime el código del artículo"), menuIva());
-    } catch (ArticuloIncorrectoException | IvaInvalidoException e) {};
+    } catch (ArticuloIncorrectoException | IvaInvalidoException e) {}
   }
   
 
@@ -226,15 +226,4 @@ public class TestAlmacen {
       System.err.println("Stock incorrecto. No se puede extraer más artículos de los almacenados.");
     }
   }
-
-//  /**
-//   * Espera una cantidad n de segundos para que le de tiempo a leer al usuario.
-//   */
-//  private static void esperaSegundos(int n) {
-//    try {
-//      Thread.sleep(n * 1000);
-//    } catch (Exception e) {
-//    }
-//  }
-
 }
