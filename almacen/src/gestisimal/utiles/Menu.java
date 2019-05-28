@@ -9,9 +9,8 @@ import gestisimal.utiles.Teclado;
  *
  */
 public class Menu {
-  String nombreMenu = "";
-  String [] opciones;
-  int numOpciones;
+  private String nombreMenu;
+  private String [] opciones;
   
   /**
    * Constructor de la Clase Menú.
@@ -22,7 +21,6 @@ public class Menu {
   public Menu(String nombreMenu, String[] opciones) {
     this.nombreMenu = nombreMenu;
     this.opciones = opciones;
-    this.numOpciones = opciones.length;
   }
   
   /**
