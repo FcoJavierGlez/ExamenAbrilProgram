@@ -162,7 +162,9 @@ public class TestAlmacen {
   private static void modificarDescripcion() {
     try {
       almacen.modificarDescripcion(Teclado.leeEntero("Dime el código del artículo"), Teclado.leeCadena("Introduce la nueva descripción"));
-    } catch (ArticuloIncorrectoException aie) {}
+    } catch (ArticuloIncorrectoException aie) {
+      System.err.println("El artículo seleccionado no existe.");
+    }
   }
   
   
@@ -172,7 +174,9 @@ public class TestAlmacen {
   private static void modificarPrecioCompra() {
     try {
       almacen.modificarPrecioCompra(Teclado.leeEntero("\nDime el código del artículo"), Teclado.leeDecimal("\nDime el nuevo precio de compra"));
-    } catch (ArticuloIncorrectoException aie) {}
+    } catch (ArticuloIncorrectoException aie) {
+      System.err.println("El artículo seleccionado no existe.");
+    }
   }
   
   
@@ -182,7 +186,9 @@ public class TestAlmacen {
   private static void modificarPrecioVenta() {
     try {
       almacen.modificarPrecioVenta(Teclado.leeEntero("\nDime el código del artículo"), Teclado.leeDecimal("\nDime el nuevo precio de venta"));
-    } catch (ArticuloIncorrectoException e) {}
+    } catch (ArticuloIncorrectoException e) {
+      System.err.println("El artículo seleccionado no existe.");
+    }
   }
   
   
@@ -192,7 +198,11 @@ public class TestAlmacen {
   private static void modificarIva() {
     try {
       almacen.modificarIva(Teclado.leeEntero("\nDime el código del artículo"), menuIva());
-    } catch (ArticuloIncorrectoException | IvaInvalidoException e) {}
+    } catch (ArticuloIncorrectoException e) {
+      System.err.println("El artículo seleccionado no existe.");
+    } catch (IvaInvalidoException e) {
+      System.err.println("Tipo de IVA incorrecto.");
+    }
   }
   
 
@@ -221,7 +231,7 @@ public class TestAlmacen {
       almacen.salidaMercancia(Teclado.leeEntero("\nInserte el código del artículo del que ha entrado mercancia"),
           Teclado.leeEntero("\n¿Cuántos artículos han salido?"));
     } catch (ArticuloIncorrectoException aie) {
-      System.err.println("Artículo incorrecto.");
+      System.err.println("El artículo seleccionado no existe.");
     } catch (ErrorStockException e) {
       System.err.println("Stock incorrecto. No se puede extraer más artículos de los almacenados.");
     }
