@@ -18,9 +18,7 @@ public class Teclado {
    * @return Cadena de caracteres (String).
    */
   public static String leeCadena() {
-    String cadena = "";
-    cadena = s.nextLine();
-    return cadena;
+    return s.nextLine();
   }
   
   /**
